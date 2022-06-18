@@ -2,9 +2,9 @@ package boardgame;
 
 public class Board {
 
-	private int rows; 				// quantidade de linhas do tabuleiro
-	private int columns;			// quantidade de colunas do tabuleiro
-	private Piece[][] pieces;		// matriz de peças
+	private int rows;
+	private int columns;
+	private Piece[][] pieces;
 	
 	public Board(int rows, int columns) {
 		this.rows = rows;
@@ -28,5 +28,11 @@ public class Board {
 		this.columns = columns;
 	}
 	
+	public Piece piece(int row, int column) { // retorna a matriz pieces na linha row e na coluna column
+		return pieces[row][column];
+	}
 	
+	public Piece piece(Position position) { // sobrecarga do método piece acima, mas recebendo um position, retornando a peça por posição
+		return pieces[position.getRow()][position.getColumn()];
+	}
 }
