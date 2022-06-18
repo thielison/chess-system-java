@@ -35,4 +35,9 @@ public class Board {
 	public Piece piece(Position position) { // sobrecarga do método piece acima, mas recebendo um position, retornando a peça por posição
 		return pieces[position.getRow()][position.getColumn()];
 	}
+	
+	public void placePiece(Piece piece, Position position) {
+		pieces[position.getRow()][position.getColumn()] = piece;
+		piece.position = position; // position da classe Piece é acessível porque esse atributo é protected
+	}
 }
