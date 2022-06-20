@@ -11,7 +11,7 @@ public class King extends ChessPiece {
 	}
 
 	// converte um rei (King) para String
-	// A letra "K" de King entra na hora de imprimir o tabuleiro, onde estiver a peça no tabuleiro vai aparecer a letra "K"
+	// a letra "K" de King entra na hora de imprimir o tabuleiro, onde estiver a peça no tabuleiro vai aparecer a letra "K"
 	@Override
 	public String toString() {
 		return "K";

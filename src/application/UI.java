@@ -17,7 +17,7 @@ public class UI {
 	}
 	
 	private static void printPiece(ChessPiece piece) {
-		if (piece == null) { // se piece == null, significa que não tinha peça nessa posição do tabuleiro
+		if (piece == null) { // se piece == null, significa que não tinha nenhuma peça nessa posição do tabuleiro
 			System.out.print("-");
 		} 
 		else {

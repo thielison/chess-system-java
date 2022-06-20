@@ -1,7 +1,6 @@
 package chess;
 
 import boardgame.Board;
-import boardgame.Position;
 import chess.pieces.King;
 import chess.pieces.Rook;
 
@@ -13,8 +12,8 @@ public class ChessMatch {
 	private Board board; // uma partida de xadrez tem que ter um tabuleiro
 	
 	public ChessMatch() {
-		board = new Board(8, 8); // na hora que iniciar a partida, é criado um tabuleiro 8x8
-		initialSetup();			// e é chamada a função initialSetup();
+		board = new Board(8, 8); // no momento de inicio da da partida, é criado um tabuleiro 8x8
+		initialSetup(); // e é chamada a função initialSetup();
 	}
 	
 	public ChessPiece[][] getPieces() {
@@ -29,10 +28,14 @@ public class ChessMatch {
 		return mat;
 	}
 	
+	private void placeNewPiece(char column, int row, ChessPiece piece) { // método responsável por receber as coordenadas do xadrez
+		board.placePiece(piece, new ChessPosition(column, row).toPosition());
+	}
+	
 	// método responsável por iniciar a partida de xadrez, colocando as peças no tabuleiro
 	private void initialSetup() {
-		 board.placePiece(new Rook(board, Color.WHITE), new Position(2,1));
-		 board.placePiece(new King(board, Color.BLACK), new Position(0,4));
-		 board.placePiece(new King(board, Color.WHITE), new Position(7,4));
+		 placeNewPiece('b', 6, new Rook(board, Color.WHITE));
+		 placeNewPiece('e', 8, new King(board, Color.BLACK));
+		 placeNewPiece('e', 1, new King(board, Color.WHITE));
 	}
 }
