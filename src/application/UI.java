@@ -39,10 +39,8 @@ public class UI {
 	public static ChessPosition readChessPosition(Scanner sc) {
 		try {
 			String s = sc.nextLine();
-			char column = s.charAt(0); // charAt(0) porque a coluna do tabuleiro de xadrez é o primeiro caractere do
-										// string que será lido
-			int row = Integer.parseInt(s.substring(1)); // recorta o String s a partir da posição 1 e converte para
-														// inteiro para ter a linha
+			char column = s.charAt(0); // charAt(0) porque a coluna do tabuleiro de xadrez é o primeiro caractere do string que será lido
+			int row = Integer.parseInt(s.substring(1)); // recorta o String s a partir da posição 1 e converte para inteiro para ter a linha
 			return new ChessPosition(column, row);
 		} 
 		catch (RuntimeException e) {

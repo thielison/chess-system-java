@@ -49,6 +49,9 @@ public class ChessMatch {
 		if (!board.thereIsAPiece(position)) { // se não existe uma peça nessa posição, lança a exceção
 			throw new ChessException("There is no piece on source position.");
 		}
+		if (!board.piece(position).isThereAnyPossibleMove()) { // se não tiver nenhum movimento possível, lança uma exceção
+			throw new ChessException("There is no possible moves for the chosen piece.");
+		}
 	}
 	
 	private void placeNewPiece(char column, int row, ChessPiece piece) { // método responsável por receber as coordenadas do xadrez
