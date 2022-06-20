@@ -58,6 +58,22 @@ public class Board {
 		piece.position = position; // position da classe Piece é acessível porque esse atributo é protected
 	}
 	
+	public Piece removePiece(Position position) {
+		// Se essa posição não existe no tabuleiro, retorna com uma exceção
+		if (!positionExists(position)) {
+			throw new BoardException("Position not on the board.");
+		}
+		if (piece(position) == null) { // se a peça do tabuleiro nessa posição é igual a nulo, significa que não tem nenhuma peça nessa posição
+			return null;
+		}
+		
+		// se não acontecer as condições acima, aí sim retira a peça do tabuleiro
+		Piece aux = piece(position); 
+		aux.position = null; // essa peça foi retirada do tabuleiro, ela não tem mais posição
+		pieces[position.getRow()][position.getColumn()] = null; // na matriz de peças, nessa position onde estou removendo a peça, agora vai ser nulo, indicando que não tem mais peça nessa posição da matriz
+		return aux; // retorna a peça que foi retirada
+	}
+	
 	private boolean positionExists(int row, int column) {
 		// uma posição numa determinada linha e numa determinada coluna existe quando essa posição está dentro do tabuleiro
 		
