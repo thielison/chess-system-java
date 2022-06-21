@@ -25,6 +25,11 @@ public class Position {
 	public void setColumn(int column) {
 		this.column = column;
 	}
+	
+	public void setValues(int row, int column) { // atualiza os valores de uma posição de peça do tabuleiro
+		this.row = row;
+		this.column = column;
+	}
 
 	@Override
 	public String toString() {
