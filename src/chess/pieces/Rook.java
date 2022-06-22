@@ -36,7 +36,7 @@ public class Rook extends ChessPiece {
 		
 		// verificação das posições ao lado esquerdo da peça
 		p.setValues(position.getRow(), position.getColumn() - 1);
-		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) { 
+		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 			p.setColumn(p.getColumn() - 1);
 		}
@@ -46,7 +46,7 @@ public class Rook extends ChessPiece {
 		
 		// verificação das posições ao lado direito da peça
 		p.setValues(position.getRow(), position.getColumn() + 1);
-		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) { 
+		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 			p.setColumn(p.getColumn() + 1);
 		}
@@ -58,7 +58,7 @@ public class Rook extends ChessPiece {
 		p.setValues(position.getRow() + 1, position.getColumn());
 		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) { // enquanto uma posição p existir e não tiver uma peça lá, ou seja, enquanto a posição estiver vaga, marca a posição como verdadeira
 			mat[p.getRow()][p.getColumn()] = true;
-			p.setRow(p.getRow() - 1);
+			p.setRow(p.getRow() + 1);
 		}
 		if (getBoard().positionExists(p) && isThereOpponentPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;

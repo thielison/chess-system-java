@@ -1,5 +1,8 @@
 package chess;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import boardgame.Board;
 import boardgame.Piece;
 import boardgame.Position;
@@ -15,6 +18,9 @@ public class ChessMatch {
 	private Color currentPlayer;	
 	private Board board; // uma partida de xadrez tem que ter um tabuleiro
 
+	private List<Piece> piecesOnTheBoard = new ArrayList<>();
+	private List<Piece> capturedPieces = new ArrayList<>();
+	
 	public ChessMatch() {
 		board = new Board(8, 8); // no momento de inicio da da partida, é criado um tabuleiro 8x8
 		turn = 1;
@@ -58,10 +64,16 @@ public class ChessMatch {
 		return (ChessPiece)capturedPiece; 
 	}
 	
-	private Piece makeMove(Position source, Position target) {
+	private Piece makeMove(Position source, Position target) { 
 		Piece p = board.removePiece(source); // retira a peça que estava na posição de origem
-		Piece capturedPiece = board.removePiece(target); // remove a possível peça que esteja na posição de destino
+		Piece capturedPiece = board.removePiece(target); // remove a possível peça capturada que esteja na posição de destino
 		board.placePiece(p, target); // coloca a peça p na posição de destino target
+		
+		if (capturedPiece != null) { // se uma peça foi capturada, ou seja, se for diferente de null, uma peça foi capturada
+			piecesOnTheBoard.remove(capturedPiece); // então remove a peça capturada da lista de peças do tabuleiro
+			capturedPieces.add(capturedPiece); // e adiciona ela na lista de peças capturadas
+		}
+		
 		return capturedPiece;
 	}
 	
@@ -90,7 +102,8 @@ public class ChessMatch {
 	}
 	
 	private void placeNewPiece(char column, int row, ChessPiece piece) { // método responsável por receber as coordenadas do xadrez
-		board.placePiece(piece, new ChessPosition(column, row).toPosition());
+		board.placePiece(piece, new ChessPosition(column, row).toPosition()); // coloca a peça no tabuleiro
+		piecesOnTheBoard.add(piece); // coloca essa peça na lista de peças no tabuleiro
 	}
 
 	// método responsável por iniciar a partida de xadrez, colocando as peças no tabuleiro
