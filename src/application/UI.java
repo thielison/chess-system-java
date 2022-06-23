@@ -58,9 +58,15 @@ public class UI {
 		printCapturedPieces(captured);
 		System.out.println();
 		System.out.println("Turn : " + chessMatch.getTurn()); // mostra turno tal
-		System.out.println("Waiting player: " + chessMatch.getCurrentPlayer()); // aguardando jogador da cor tal
-		if (chessMatch.getCheck()) { // se a minha partida chessMatch.getCheck, significa que está em cheque
-			System.out.println("CHECK!");
+		if (!chessMatch.getCheckMate()) { // se não tiver com checkMate
+			System.out.println("Waiting player: " + chessMatch.getCurrentPlayer()); // espera a próxima jogada
+			if (chessMatch.getCheck()) {
+				System.out.println("CHECK!");
+			}
+		}
+		else { // senão, se tiver em checkMate, mostra a mensagem checkmate!
+			System.out.println("CHECKMATE!");
+			System.out.println("Winner: " + chessMatch.getCurrentPlayer());
 		}
 	}
 
