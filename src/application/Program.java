@@ -18,28 +18,28 @@ public class Program {
 		ChessMatch chessMatch = new ChessMatch();
 		List<ChessPiece> captured = new ArrayList<>();
 		
-		while (!chessMatch.getCheckMate()) { // enquanto não estiver em checkMate, roda o programa normal. Acontenceu um checkMate, o while vai falar e vai limpar a tela, mostrando a partida finalizada
+		while (!chessMatch.getCheckMate()) {
 			try {
-				UI.clearScreen(); // limpa a tela a cada vez que voltar no início do while, ou seja, a cada movimento de posições de peças
-				UI.printMatch(chessMatch, captured); // UI = User Interface, imprime o tabuleiro na tela
+				UI.clearScreen();
+				UI.printMatch(chessMatch, captured);
 				System.out.println();
 				System.out.print("Source: ");
-				ChessPosition source = UI.readChessPosition(sc); // usuário insere a posição de origem
+				ChessPosition source = UI.readChessPosition(sc);
 				
 				boolean[][] possibleMoves = chessMatch.possibleMoves(source);
 				UI.clearScreen();
 				UI.printBoard(chessMatch.getPieces(), possibleMoves);				
 				System.out.println();
 				System.out.print("Target: ");
-				ChessPosition target = UI.readChessPosition(sc); // usuário insere a posição de destino
+				ChessPosition target = UI.readChessPosition(sc);
 				
-				ChessPiece capturedPiece = chessMatch.performChessMove(source, target); // sempre que efetuar um movimento e esse movimento resultar em uma peça capturada...
-				if (capturedPiece != null) { // se a peça capturada for diferente de nulo, significa que algum peça foi capturada
-					captured.add(capturedPiece); // e adiciona ela na lista de peças capturadas
+				ChessPiece capturedPiece = chessMatch.performChessMove(source, target);
+				if (capturedPiece != null) {
+					captured.add(capturedPiece);
 				}
 				
-				if (chessMatch.getPromoted() != null) { // se essa partida.getPromoted for diferente de nulo, significa que uma peça foi promovida
-					System.out.print("Enter piece for promotion (B/N/R/Q): "); // e pede para o usuário uma peça que ele quer que seja promovida
+				if (chessMatch.getPromoted() != null) {
+					System.out.print("Enter piece for promotion (B/N/R/Q): ");
 					String type = sc.nextLine().toUpperCase();
 					while (!type.equals("B") && !type.equals("N") && !type.equals("R") & !type.equals("Q")) {
 						System.out.print("Invalid value! Enter piece for promotion (B/N/R/Q): ");
@@ -57,7 +57,7 @@ public class Program {
 				sc.nextLine();
 			}
 		}
-		UI.clearScreen(); // Acontenceu um checkMate, o while vai falar e vai limpar a tela, mostrando a partida finalizada
+		UI.clearScreen();
 		UI.printMatch(chessMatch, captured);
 	}
 }

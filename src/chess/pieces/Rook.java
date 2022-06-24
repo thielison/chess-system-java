@@ -11,8 +11,6 @@ public class Rook extends ChessPiece {
 		super(board, color);	
 	}
 	
-	// converte uma torre (Rook) para String
-	// a letra "R" de Rook entra na hora de imprimir o tabuleiro, onde estiver a peça no tabuleiro vai aparecer a letra "R"
 	@Override
 	public String toString() {
 		return "R";
@@ -26,7 +24,7 @@ public class Rook extends ChessPiece {
 		
 		// verificação das posições acima da peça
 		p.setValues(position.getRow() - 1, position.getColumn());
-		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) { // enquanto uma posição p existir e não tiver uma peça lá, ou seja, enquanto a posição estiver vaga, marca a posição como verdadeira
+		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 			p.setRow(p.getRow() - 1);
 		}
@@ -56,7 +54,7 @@ public class Rook extends ChessPiece {
 		
 		// verificação das posições abaixo da peça
 		p.setValues(position.getRow() + 1, position.getColumn());
-		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) { // enquanto uma posição p existir e não tiver uma peça lá, ou seja, enquanto a posição estiver vaga, marca a posição como verdadeira
+		while (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 			p.setRow(p.getRow() + 1);
 		}

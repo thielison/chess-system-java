@@ -21,10 +21,10 @@ public class Pawn extends ChessPiece {
 
 		Position p = new Position(0, 0);
 		
-		if (getColor() == Color.WHITE) { // peão branco
+		if (getColor() == Color.WHITE) { 
 			p.setValues(position.getRow() - 1, position.getColumn());
-			if (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {  // se a posição de uma linha acima do peão branco existir e estiver vazia...
-				mat[p.getRow()][p.getColumn()] = true; // ele pode mover pra essa posição vazia
+			if (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
+				mat[p.getRow()][p.getColumn()] = true;
 			}
 			p.setValues(position.getRow() - 2, position.getColumn());
 			Position p2 = new Position(position.getRow() - 1, position.getColumn());
@@ -52,7 +52,7 @@ public class Pawn extends ChessPiece {
 				}
 			}
 		}
-		else { // peão preto
+		else {
 			p.setValues(position.getRow() + 1, position.getColumn());
 			if (getBoard().positionExists(p) && !getBoard().thereIsAPiece(p)) {
 				mat[p.getRow()][p.getColumn()] = true;

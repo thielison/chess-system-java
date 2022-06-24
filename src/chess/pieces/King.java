@@ -15,21 +15,19 @@ public class King extends ChessPiece {
 		this.chessMatch = chessMatch;
 	}
 
-	// converte um rei (King) para String
-	// a letra "K" de King entra na hora de imprimir o tabuleiro, onde estiver a peça no tabuleiro vai aparecer a letra "K"
 	@Override
 	public String toString() {
 		return "K";
 	}
 
-	private boolean canMove(Position position) { // esse método vai dizer se o rei pode mover para uma determinada direção
+	private boolean canMove(Position position) {
 		ChessPiece p = (ChessPiece)getBoard().piece(position);
 		return p == null || p.getColor() != getColor();
 	}
 	
-	private boolean testRookCastling(Position position) { // testa se nessa posição que informar existe uma torre e se essa torre está apta para rook
+	private boolean testRookCastling(Position position) {
 		ChessPiece p = (ChessPiece)getBoard().piece(position);
-		return p != null && p instanceof Rook && p.getColor() == getColor() && p.getMoveCount() == 0; // uma torre está apta para rook quando a quantidade de movimentos dela é igual a zero
+		return p != null && p instanceof Rook && p.getColor() == getColor() && p.getMoveCount() == 0;
 	}
 
 	
@@ -39,7 +37,6 @@ public class King extends ChessPiece {
 		
 		Position p = new Position(0, 0);
 		
-		// Testa cada uma das 8 direções possíveis que um rei pode se mover
 		// ACIMA
 		p.setValues(position.getRow() - 1, position.getColumn());
 		if (getBoard().positionExists(p) && canMove(p)) {
